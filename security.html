@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps & Automation | YourCompany</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:#0f172a;color:#e2e8f0;}
+
+.section{
+padding:120px 8%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:60px;
+min-height:100vh;
+}
+
+.content{flex:1;animation:fadeLeft 1s ease forwards;opacity:0;}
+.content h1{font-size:48px;margin-bottom:25px;color:white;}
+.content p{font-size:17px;line-height:1.8;margin-bottom:25px;color:#cbd5e1;}
+
+.btn{
+display:inline-block;
+padding:14px 32px;
+background:linear-gradient(135deg,#4f46e5,#7c3aed);
+color:white;text-decoration:none;
+border-radius:12px;font-weight:600;
+transition:0.4s ease;
+}
+.btn:hover{transform:translateY(-6px);box-shadow:0 15px 35px rgba(79,70,229,0.4);}
+
+.image{flex:1;text-align:center;animation:fadeRight 1.2s ease forwards;opacity:0;}
+.image img{
+width:100%;max-width:500px;border-radius:20px;
+box-shadow:0 25px 60px rgba(0,0,0,0.5);
+transition:0.5s ease;
+}
+.image img:hover{transform:scale(1.05);}
+
+@keyframes fadeLeft{from{transform:translateX(-50px);opacity:0;}to{transform:translateX(0);opacity:1;}}
+@keyframes fadeRight{from{transform:translateX(50px);opacity:0;}to{transform:translateX(0);opacity:1;}}
+
+@media(max-width:992px){
+.section{flex-direction:column;text-align:center;padding:80px 6%;}
+.content h1{font-size:34px;}
+.content p{font-size:15px;}
+.image img{margin-top:30px;}
+}
+</style>
+</head>
+<body>
+
+<section class="section">
+<div class="content">
+<h1>Cloud Security & Governance</h1>
+
+<p>
+We design zero-trust AWS architectures with advanced IAM policies,
+network segmentation, and encryption best practices.
+</p>
+
+<p>
+Our governance frameworks ensure compliance, continuous monitoring,
+and proactive threat mitigation across your cloud environment.
+</p>
+<a href="tel:+91 9581736353" class="btn">Contact Us</a>
+</div>
+
+<div class="image">
+<img src="https://images.unsplash.com/photo-1563986768609-322da13575f3" alt="Cloud Security">
+</div>
+</section>
+
+</body>
+</html>
