@@ -802,6 +802,31 @@ body {
 }
 
 /* Animated Moving Glow */
+/* CTA SECTION WITH BACKGROUND IMAGE */
+.cta-section {
+    position: relative;
+    padding: 150px 8%;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+
+    background: url('https://investingnews.com/media-library/robot-hand-touching-human-hand-with-a-spark-in-between.jpg?id=33553684&width=2000&height=1500&coordinates=138%2C0%2C139%2C0') center/cover no-repeat;
+}
+
+/* Dark Overlay for readability */
+.cta-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.85),
+        rgba(30, 41, 59, 0.85)
+    );
+    z-index: 1;
+}
+
+/* Optional subtle animated glow */
 .cta-section::after {
     content: "";
     position: absolute;
