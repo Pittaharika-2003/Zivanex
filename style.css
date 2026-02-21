@@ -365,7 +365,7 @@ body {
     width: 100%;
     height: 4px;
     background: linear-gradient(90deg, #4f46e5, #7c3aed);
-    bottom: 0;
+    top: 0;
     left: 0;
     transform: scaleX(0);
     transition: 0.4s ease;
@@ -561,10 +561,13 @@ body {
         left: 0;
     }
 }
-/* WHOM WE SERVE */
+/* ===============================
+   WHOM WE SERVE – PREMIUM VERSION
+================================= */
+
 .serve-section {
     padding: 120px 8%;
-    background: linear-gradient(135deg, #ffffff, #f3f4f6);
+    background: linear-gradient(135deg, #ffffff, #f8fafc);
     text-align: center;
 }
 
@@ -584,48 +587,55 @@ body {
 
 /* CARD */
 .serve-card {
-    background: white;
-    padding: 40px;
+    background: #ffffff;
+    padding: 50px 40px;
     border-radius: 20px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-    transition: 0.4s ease;
+    transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
 }
 
+/* Hover Lift */
 .serve-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 25px 60px rgba(79,70,229,0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.08);
 }
 
-/* Subtle gradient border on hover */
-.serve-card::before {
+/* ===== Bottom Animated Line ===== */
+.serve-card::after {
     content: "";
     position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    padding: 2px;
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: 0.4s;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, #4f46e5, #7c3aed);
+    transition: width 0.4s ease;
 }
 
-.serve-card:hover::before {
-    opacity: 1;
+.serve-card:hover::after {
+    width: 100%;
 }
 
 /* ICON */
 .serve-icon {
     width: 80px;
     height: 80px;
-    margin: 0 auto 20px;
+    margin: 0 auto 25px;
     background: linear-gradient(135deg, #eef2ff, #e0e7ff);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.4s ease;
+}
+
+/* Icon subtle animation */
+.serve-card:hover .serve-icon {
+    transform: scale(1.08);
+    box-shadow: 0 10px 30px rgba(79,70,229,0.2);
 }
 
 .serve-icon img {
@@ -645,7 +655,10 @@ body {
     line-height: 1.6;
 }
 
-/* RESPONSIVE */
+/* ===============================
+   RESPONSIVE
+================================= */
+
 @media(max-width: 992px) {
     .serve-grid {
         grid-template-columns: 1fr;
@@ -653,6 +666,11 @@ body {
 }
 
 @media(max-width: 600px) {
+
+    .serve-section {
+        padding: 80px 6%;
+    }
+
     .serve-title {
         font-size: 30px;
     }
@@ -1035,3 +1053,4 @@ body {
     }
 
 }
+
