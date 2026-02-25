@@ -149,9 +149,9 @@ body {
 }
 /* HERO SECTION */
 .hero {
-    padding-top: 120px;
-    padding-bottom: 80px;
-    min-height: 100vh;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     position: relative;
@@ -198,9 +198,8 @@ body {
     line-height: 1.2;
     color: #111827;
     margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(40px);
-    animation: fadeUp 1s ease forwards;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .hero-text {
@@ -208,10 +207,8 @@ body {
     color: #4b5563;
     margin-bottom: 30px;
     max-width: 550px;
-    opacity: 0;
-    transform: translateY(40px);
-    animation: fadeUp 1s ease forwards;
-    animation-delay: 0.3s;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Fade Up Animation */
@@ -238,6 +235,10 @@ body {
     transform: translateY(-4px);
     box-shadow: 0 20px 40px rgba(79,70,229,0.3);
 }
+.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 /* Pulse Animation */
 .pulse {
@@ -249,30 +250,55 @@ body {
     70% { box-shadow: 0 0 0 15px rgba(79,70,229,0); }
     100% { box-shadow: 0 0 0 0 rgba(79,70,229,0); }
 }
+/* ===============================
+   HERO KEYWORDS AUTO SCROLL
+================================= */
 
-/* RIGHT SIDE */
-.hero-right {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    opacity: 0;
-    transform: translateY(40px);
-    animation: fadeUp 1s ease forwards;
-    animation-delay: 0.6s;
+.hero-keywords {
+    margin-top: 40px;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
 }
 
-.hero-right img {
-    max-width: 100%;
-    width: 480px;
-    animation: floatImage 5s ease-in-out infinite;
+.keywords-track {
+    display: inline-flex;
+    gap: 40px;
+    animation: scrollKeywords 20s linear infinite;
 }
 
-/* Floating Image */
-@keyframes floatImage {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
+/* Vertical line between words */
+.keywords-track span {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    position: relative;
+    padding-right: 40px;
 }
+
+.keywords-track span::after {
+    content: "|";
+    position: absolute;
+    right: 10px;
+    color: #9ca3af;
+}
+
+/* Remove last separator visually */
+.keywords-track span:last-child::after {
+    display: none;
+}
+
+/* Animation */
+@keyframes scrollKeywords {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
 
 /* MOBILE RESPONSIVE */
 @media(max-width: 992px) {
@@ -313,9 +339,41 @@ body {
         font-size: 14px;
     }
 }
+/* VIDEO BACKGROUND */
+.hero-video{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:0;
+}
+
+/* overlay for readability */
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.45);
+    z-index:1;
+}
+
+/* keep content above video */
+.hero-container{
+    position:relative;
+    z-index:2;
+}
+
+/* text color white on video */
+.hero-title,
+.hero-text{
+    color:white;
+}
+/* WHAT WE DO SECTION */
 /* WHAT WE DO SECTION */
 .what-section {
-    padding: 100px 8%;
+    padding: 60px 8%;
     background: #ffffff;
     text-align: center;
 }
@@ -325,13 +383,14 @@ body {
     font-weight: 700;
     color: #111827;
     margin-bottom: 15px;
+    padding-top: 10px;
 }
 
 .section-subtitle {
     font-size: 22px;
     font-weight: 500;
     color: #4f46e5;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 /* GRID */
@@ -343,66 +402,102 @@ body {
 
 /* CARD */
 .service-card {
-    background: #f9fafb;
-    padding: 35px;
-    border-radius: 16px;
-    text-align: left;
-    transition: 0.4s ease;
-    border: 1px solid #eef2ff;
     position: relative;
+    height: 250px;
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
     overflow: hidden;
+    transition: transform 0.4s ease;
 }
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(79,70,229,0.1);
 }
 
-/* Card Hover Glow */
-.service-card::before {
-    content: "";
+/* Dark Overlay */
+.service-card .overlay {
     position: absolute;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #4f46e5, #7c3aed);
-    top: 0;
-    left: 0;
-    transform: scaleX(0);
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.3) 0%,
+        rgba(0,0,0,0.6) 100%
+    );
     transition: 0.4s ease;
 }
 
-.service-card:hover::before {
-    transform: scaleX(1);
+.service-card:hover .overlay {
+    background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.5) 0%,
+        rgba(0,0,0,0.8) 100%
+    );
 }
 
-.service-card h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: #111827;
+/* Arrow Top Right */
+.arrow {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.4s ease;
+    z-index: 2;
 }
 
-.service-card p {
-    font-size: 15px;
-    color: #6b7280;
-    margin-bottom: 25px;
+.service-card:hover .arrow {
+    transform: translateX(6px) rotate(270deg);
 }
 
-/* BUTTON */
-.know-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+/* Title Always Visible */
+/* Title - Always Visible */
+.card-title {
+    position: absolute;
+    bottom: 40px;
+    left: 30px;
+    right: 30px;
     color: white;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: 0.3s ease;
+    z-index: 2;
+    transition: transform 0.4s ease;
 }
 
-.know-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(79,70,229,0.3);
+.card-title h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Description */
+.card-desc {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    color: #e5e7eb;
+    font-size: 14px;
+    line-height: 1.6;
+    z-index: 2;
+}
+
+/* Hover Effect */
+.service-card:hover .card-title {
+    transform: translateY(-40px);
+}
+
+.service-card:hover .card-desc {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* RESPONSIVE */
@@ -1051,6 +1146,4 @@ body {
     .footer {
         padding: 70px 8% 30px;
     }
-
 }
-
