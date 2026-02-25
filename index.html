@@ -21,8 +21,6 @@
         <nav class="nav-links" id="navLinks">
             <a href="#home" class="nav-item active">Home</a>
             <a href="#what" class="nav-item">What We Do</a>
-            <a href="#principles" class="nav-item">Our Principles</a>
-            <a href="#service" class="nav-item">Whom We Serve</a>
             <a href="#why" class="nav-item">Why Choose Us</a>
         </nav>
 
@@ -41,10 +39,15 @@
     </div>
 </header>
 <section class="hero" id="home">
+    <!-- BACKGROUND VIDEO -->
+    <video class="hero-video" autoplay muted loop playsinline>
+        <source src="https://res.cloudinary.com/dkhmpija5/video/upload/v1772027886/WhatsApp_Video_2026-02-25_at_5.04.42_PM_eznbgk.mp4" type="video/mp4">
+    </video>
+
     <div class="hero-container">
 
         <!-- LEFT SIDE -->
-        <div class="hero-left reveal">
+        <div class="hero-left ">
             <h1 class="hero-title">
                 Engineering Secure AWS Cloud & AI Systems
             </h1>
@@ -54,20 +57,40 @@
                 production-ready RAG and AI applications with automation, monitoring, 
                 and cost intelligence.
             </p>
-
             <div class="hero-buttons">
-                <a href="tel:+91 9581736353" class="hero-btn pulse">
+                <a href="#contact" class="hero-btn pulse">
                     Talk to Our Engineer
                 </a>
             </div>
+            <div class="hero-keywords">
+                <div class="keywords-track">
+                    <span>AI</span>
+                    <span>Cloud</span>
+                    <span>DevOps</span>
+                    <span>FinOps</span>
+                    <span>Security</span>
+                    <span>AWS</span>
+                    <span>Multi-Cloud</span>
+
+                    <!-- duplicate for smooth loop -->
+                    <span>AI</span>
+                    <span>Cloud</span>
+                    <span>DevOps</span>
+                    <span>FinOps</span>
+                    <span>Security</span>
+                    <span>AWS</span>
+                    <span>Multi-Cloud</span>
+                </div>
+            </div>
+
+
+
         </div>
 
-        <!-- RIGHT SIDE -->
-        <div class="hero-right reveal">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD48ATf2PAf8K3uAFf8eXhmfZr_RO5Cvlrgw&s" alt="Cloud AI Image">
-        </div>
+    
 
     </div>
+    
 </section>
 <section class="what-section" id="what">
 
@@ -79,51 +102,105 @@
         <div class="services-grid">
 
             <!-- 1 -->
-            <div class="service-card">
-                <h2>Cloud Infrastructure Engineering</h2>
-                <p>Secure, scalable AWS infrastructure designed for reliability and growth.</p>
-                <a href="cloud-infrastructure.html" class="know-btn">Know More</a>
+            <div class="service-card" data-link="cloud-infrastructure.html"
+                 style="background-image: url('https://cdn.bluent.com/images/cloud-data-engineering.webp');">
+
+                <div class="overlay"></div>
+
+                <div class="arrow"><span>&#8594;</span></div>
+                <div class="card-content">
+                    <div class="card-title">
+                        <h2>Cloud Infrastructure Engineering</h2>
+                    </div>
+
+                    <div class="card-desc">
+                        <p>Secure, scalable AWS infrastructure designed for reliability and growth.</p>
+                    </div>
+                </div>
             </div>
 
             <!-- 2 -->
-            <div class="service-card">
-                <h2>DevOps & Automation</h2>
-                <p>Faster, safer deployments with automated cloud delivery pipelines.</p>
-                <a href="devops.html" class="know-btn">Know More</a>
+            <div class="service-card" data-link="devops.html"
+                 style="background-image: url('https://www.softude.com/wp-content/uploads/New-website-Blogs-Banner-Image-700-x-465-px-7-6.webp');">
+
+                <div class="overlay"></div>
+                <div class="arrow"><span>&#8594;</span></div>
+
+                <div class="card-title">
+                    <h2>DevOps & Automation</h2>
+                </div>
+
+                <div class="card-desc">
+                    <p>Faster, safer deployments with automated cloud delivery pipelines.</p>
+                </div>
             </div>
 
             <!-- 3 -->
-            <div class="service-card">
-                <h2>Security & Governance</h2>
-                <p>Cloud environments secured by design with enterprise-grade access control.</p>
-                <a href="security.html" class="know-btn">Know More</a>
+            <div class="service-card" data-link="security.html"
+                 style="background-image: url('https://media.istockphoto.com/id/1397398956/photo/digital-shield-3d-rendering-stock-photo.jpg?s=612x612&w=0&k=20&c=sdHgSfxL9R1pEahOWazk3eHU7cPlZvZfmiiFtdwOd78=');">
+
+                <div class="overlay"></div>
+                <div class="arrow"><span>&#8594;</span></div>
+
+                <div class="card-title">
+                    <h2>Security & Governance</h2>
+                </div>
+
+                <div class="card-desc">
+                    <p>Cloud environments secured by design with enterprise-grade access control.</p>
+                </div>
             </div>
 
             <!-- 4 -->
-            <div class="service-card">
-                <h2>Cost Optimization (FinOps)</h2>
-                <p>Controlled and predictable AWS spending without compromising performance.</p>
-                <a href="finops.html" class="know-btn">Know More</a>
+            <div class="service-card" data-link="finops.html"
+                 style="background-image: url('https://www.prosperops.com/wp-content/uploads/2025/05/A-Comprehensive-FinOps-Guide-to-Cloud-Cost-Optimization.png');">
+
+                <div class="overlay"></div>
+                <div class="arrow"><span>&#8594;</span></div>
+
+                <div class="card-title">
+                    <h2>Cost Optimization (FinOps)</h2>
+                </div>
+
+                <div class="card-desc">
+                    <p>Controlled and predictable AWS spending without compromising performance.</p>
+                </div>
             </div>
 
             <!-- 5 -->
-            <div class="service-card">
-                <h2>AI Systems & RAG Engineering</h2>
-                <p>Production-ready RAG and AI applications built for real business use.</p>
-                <a href="ai-rag.html" class="know-btn">Know More</a>
+            <div class="service-card" data-link="ai-rag.html"
+                 style="background-image: url('https://www.chitika.com/content/images/size/w2000/2025/01/Untitled-design--48-.jpg');">
+
+                <div class="overlay"></div>
+                <div class="arrow"><span>&#8594;</span></div>
+
+                <div class="card-title">
+                    <h2>AI Systems & RAG Engineering</h2>
+                </div>
+
+                <div class="card-desc">
+                    <p>Production-ready RAG and AI applications built for real business use.</p>
+                </div>
             </div>
 
             <!-- 6 -->
-            <div class="service-card">
-                <h2>Managed Cloud & AI Operations</h2>
-                <p>Reliable, continuously optimized cloud and AI environments.</p>
-                <a href="managed-ops.html" class="know-btn">Know More</a>
+            <div class="service-card" data-link="managed-ops.html"
+                 style="background-image: url('https://media.licdn.com/dms/image/v2/D5612AQH3SfQ5NknR2Q/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1706181142818?e=2147483647&v=beta&t=mhLrheTM8FuHOzhfVGSn_aOc3BViT7UJYWBhdiSZPqA');">
+
+                <div class="overlay"></div>
+                <div class="arrow"><span>&#8594;</span></div>
+
+                <div class="card-title">
+                    <h2>Managed Cloud & AI Operations</h2>
+                </div>
+
+                <div class="card-desc">
+                    <p>Reliable, continuously optimized cloud and AI environments.</p>
+                </div>
             </div>
 
         </div>
-
     </div>
-
 </section>
 <section class="principles-section" id="principles">
 
@@ -347,15 +424,52 @@
         <p class="cta-subtitle reveal">
             Secure, scalable cloud and AI systems engineered for real-world production.
         </p>
+        
+    <form>
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name">
+        <br>
+        <br>
+        <label for="email">Email: </label>
+        <input type="email" id="email" name="email">
+        <br>
+        <br>
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="Male">
+        <label for="male">Male</label>
+        <input type="radio" id="Female" name="gender" value="Female">
+        <label for="Female">Female</label>
+        <input type="radio" id="other" name="gender" value="other">
+        <label for="other">Other</label>
+        <br>
+        <br>
+        <label for="country">Country</label>
+        <select id="country" name="contry">
+            <option value="select option">Select Option</option>
+            <option value="India">India</option>
+            <option value="UK">UK</option>
+            <option value="usa">USA</option>
+            <option value="Others">Others</option>
 
-        <div class="cta-buttons reveal">
-            <a href="tel:+91 9581736353" class="hero-btn pulse">
-                Talk to Our Engineer
-            </a>
+        </select>
+        <br>
+        <br>
+        <label for="message">message:</label>
+        <textarea id="message" name="message" rows="1" cols="20">
+        
+        </textarea>
+    
+        <br>
+        <br>
+        <label for="date">Date</label>
+        <input type="date" name="date">
+        <br>
+        <br>
+        <input type="submit" value="submit">
+
+    </form>
         </div>
-
         <div class="cta-social reveal">
-
     <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social linkedin">
         <i class="fab fa-linkedin-in"></i>
     </a>
@@ -445,5 +559,4 @@
 
 <script src="script.js"></script>
 </body>
-
 </html>
