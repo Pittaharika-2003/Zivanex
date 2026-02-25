@@ -13,6 +13,27 @@ hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("active");
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    const currentPage = window.location.pathname.split("/").pop();
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        const linkPage = link.getAttribute("href").split("#")[0];
+
+        if (linkPage === currentPage) {
+            link.classList.add("active");
+        }
+
+        // Highlight home when on index with hash
+        if(currentPage === "index.html" && link.getAttribute("href").includes("#home")){
+            if(window.location.hash === "" || window.location.hash === "#home"){
+                link.classList.add("active");
+            }
+        }
+    });
+
+});
+
 // Active link on click
 const navItems = document.querySelectorAll(".nav-item");
 
@@ -27,6 +48,14 @@ navItems.forEach(item => {
     });
 });
 document.querySelectorAll('a[href^="#"]')
+
+document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const link = card.getAttribute('data-link');
+        window.location.href = link;
+    });
+});
+
 // Scroll Reveal Animation
 function revealOnScroll() {
     const reveals = document.querySelectorAll(".reveal");
@@ -42,3 +71,14 @@ function revealOnScroll() {
     });
 }
 window.addEventListener("scroll", revealOnScroll);
+
+let hero = document.querySelector("#home");
+let nextSection = document.querySelector("#what"); // change to your next section id
+let scrolled = false;
+
+hero.addEventListener("wheel", function(e){
+    if(!scrolled && e.deltaY > 0){
+        scrolled = true;
+        nextSection.scrollIntoView({behavior:"smooth"});
+    }
+});
