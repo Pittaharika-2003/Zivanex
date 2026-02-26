@@ -82,3 +82,51 @@ hero.addEventListener("wheel", function(e){
         nextSection.scrollIntoView({behavior:"smooth"});
     }
 });
+/ ===== 3D Tilt + Dynamic Glow =====/
+const cards = document.querySelectorAll(".why-card");
+
+cards.forEach(card => {
+
+    card.addEventListener("mousemove", e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -6;
+        const rotateY = ((x - centerX) / centerX) * 6;
+
+        card.style.transform = `
+            perspective(1000px)
+            rotateX(${rotateX}deg)
+            rotateY(${rotateY}deg)
+            translateY(-6px)
+        `;
+
+        card.style.setProperty("--x", x + "px");
+        card.style.setProperty("--y", y + "px");
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)";
+    });
+});
+
+// ===== Smooth Scroll Reveal =====
+const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+            entry.target.style.transition = `all 0.8s ease ${index * 0.15}s`;
+        }
+    });
+}, { threshold: 0.2 });
+
+cards.forEach(card => {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(40px)";
+    observer.observe(card);
+});
