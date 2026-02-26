@@ -11,6 +11,7 @@ body {
 
 /* NAVBAR */
 .navbar {
+    text-align:right;
     position: fixed;
     width: 100%;
     top: 0;
@@ -1519,3 +1520,4 @@ body {
 body {
     border: 5px solid rgb(251, 245, 245) !important;
 }
+
