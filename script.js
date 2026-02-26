@@ -1,17 +1,66 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+    const links = document.querySelectorAll(".nav-links a");
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+    /* ===== PAGE LOAD ACTIVE ===== */
+    links.forEach(link => link.classList.remove("active"));
+
+    if (currentPage === "index.html") {
+        const homeLink = document.querySelector('.nav-links a[href="index.html#home"]');
+        if (homeLink) homeLink.classList.add("active");
+    }
+
+    /* ===== SCROLL ACTIVE ONLY FOR INDEX ===== */
+    if (currentPage === "index.html") {
+
+        const sections = document.querySelectorAll("section[id]");
+
+        window.addEventListener("scroll", () => {
+
+            let scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute("id");
+
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+
+                    links.forEach(l => l.classList.remove("active"));
+
+                    const activeLink = document.querySelector(`.nav-links a[href="index.html#${sectionId}"]`);
+                    if (activeLink) activeLink.classList.add("active");
+                }
+            });
+
+        });
+    }
+
+});
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+const overlay = document.getElementById("navOverlay");
+
+hamburger.addEventListener("click",()=>{
+    hamburger.classList.toggle("active");
+    navLinks.classList.toggle("active");
+    overlay.classList.toggle("active");
+});
+
+/* tap outside close */
+overlay.addEventListener("click",()=>{
+    hamburger.classList.remove("active");
+    navLinks.classList.remove("active");
+    overlay.classList.remove("active");
+});
 // Scroll effect
 window.addEventListener("scroll", function () {
     const navbar = document.querySelector(".navbar");
     navbar.classList.toggle("scrolled", window.scrollY > 50);
 });
 
-// Hamburger toggle
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("navLinks");
 
-hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    navLinks.classList.toggle("active");
-});
 
 document.addEventListener("DOMContentLoaded", () => {
 
