@@ -19,6 +19,24 @@ body{
     background:#0f172a;
     color:#e2e8f0;
 }
+/* FULL PAGE ARCHITECTURE GRID */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:60px 60px;
+    pointer-events:none;
+    z-index:0;
+    animation:gridMove 40s linear infinite;
+}
+
+@keyframes gridMove{
+    from{transform:translateY(0);}
+    to{transform:translateY(60px);}
+}
 /* NAVBAR */
 .navbar{
     position:fixed;
@@ -167,12 +185,12 @@ body{
 /* ================= SECTION ================= */
 
 .section{
-    padding:50px 8% 80px;
+    padding:50px 8% 40px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:60px;
-    min-height:100vh;
+    min-height:80vh;
 }
 
 /* LEFT CONTENT */
@@ -362,6 +380,115 @@ body{
     from { left: -150%; }
     to { left: 150%; }
 }
+/* ================= WHAT WE DELIVER ================= */
+
+.deliver-section{
+    padding:120px 12%;
+    max-width:1300px;
+    margin:auto;
+}
+
+.deliver-title{
+    text-align:center;
+    font-size:42px;
+    font-weight:600;
+    margin-bottom:80px;
+    color:#fff;
+}
+
+.deliver-list{
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+}
+
+.deliver-item{
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    padding-bottom:20px;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.deliver-item h3{
+    font-size:22px;
+    font-weight:500;
+    color:#fff;
+    transition:0.3s;
+}
+
+.deliver-item:hover h3{
+    color:#00e0ff;
+}
+
+/* Hidden content */
+.deliver-content{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:60px;
+    align-items:center;
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(10px);
+    transition:all 0.4s ease;
+}
+
+.deliver-item.active .deliver-content{
+    max-height:600px;
+    opacity:1;
+    transform:translateY(0);
+    margin-top:25px;
+}
+
+.deliver-text p{
+    font-size:14px;
+    opacity:0.8;
+    margin-bottom:10px;
+}
+
+.deliver-text ul{
+    list-style:none;
+    padding-left:0;
+}
+
+.deliver-text li{
+    font-size:14px;
+    opacity:0.75;
+    margin-bottom:8px;
+}
+
+.deliver-image img{
+    width:100%;
+    border-radius:14px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.4);
+    transition:0.4s ease;
+}
+
+.deliver-item.active .deliver-image img{
+    transform:scale(1.03);
+}
+
+/* Mobile */
+@media(max-width:900px){
+    .deliver-section{
+        padding:80px 6%;
+    }
+
+    .deliver-title{
+        font-size:30px;
+        margin-bottom:50px;
+    }
+
+    .deliver-content{
+        grid-template-columns:1fr;
+        gap:25px;
+    }
+
+    .deliver-item h3{
+        font-size:18px;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -382,6 +509,7 @@ body{
                 <a href="index.html#home" class="nav-item">Home</a>
                 <a href="index.html#what" class="nav-item">What We Do</a>
                 <a href="index.html#why" class="nav-item">Why Choose Us</a>
+                <a href="about.html" class="nav-item">About Us </a>
             </nav>
 
             <div class="nav-btn">
@@ -402,7 +530,7 @@ body{
 
 <section class="section">
 <div class="content">
-<h1>Cloud Security & Governance</h1>
+<h1>Secure Cloud Environments by Design (AWS & Azure)</h1>
 
 <p>
 We design zero-trust AWS architectures with advanced IAM policies,
@@ -420,6 +548,124 @@ and proactive threat mitigation across your cloud environment.
 <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3" alt="Cloud Security">
 </div>
 </section>
+<section class="deliver-section">
+
+    <h2 class="deliver-title">What We Deliver</h2>
+
+    <div class="deliver-list">
+
+        <div class="deliver-item">
+            <h3>Identity & Access Management</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Controlled access to cloud resources based on least-privilege principles.</p>
+                    <ul>
+                        <li>Role-based access control (RBAC)</li>
+                        <li>Identity federation and SSO integration</li>
+                        <li>Privileged access management</li>
+                        <li>User and service identity governance</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c" alt="Identity Access Management">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>Network Security Architecture</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Isolation and protection of workloads through secure network design.</p>
+                    <ul>
+                        <li>VPC / Virtual Network segmentation</li>
+                        <li>Private subnet architecture</li>
+                        <li>Secure ingress and egress control</li>
+                        <li>Firewall and traffic filtering policies</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="Network Security">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>Data Protection & Encryption</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Protection of sensitive data across storage, applications, and communication layers.</p>
+                    <ul>
+                        <li>Encryption at rest and in transit</li>
+                        <li>Secure key management practices</li>
+                        <li>Backup protection strategies</li>
+                        <li>Data access monitoring</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" alt="Data Encryption">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>Governance & Policy Management</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Standardized governance ensuring consistent and compliant cloud usage.</p>
+                    <ul>
+                        <li>Organizational policies and guardrails</li>
+                        <li>Resource governance frameworks</li>
+                        <li>Account / subscription structure control</li>
+                        <li>Policy-based resource enforcement</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa" alt="Governance and Policy">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>Security Monitoring & Threat Visibility</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Continuous monitoring to detect risks and operational anomalies.</p>
+                    <ul>
+                        <li>Centralized logging and audit trails</li>
+                        <li>Security event monitoring</li>
+                        <li>Configuration drift detection</li>
+                        <li>Alerting and incident visibility</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="Security Monitoring">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<script>
+const items = document.querySelectorAll(".deliver-item");
+
+items.forEach(item => {
+
+    item.addEventListener("mouseenter", () => {
+        item.classList.add("active");
+    });
+
+    item.addEventListener("mouseleave", () => {
+        item.classList.remove("active");
+    });
+
+    item.addEventListener("click", () => {
+        item.classList.toggle("active");
+    });
+
+});
+</script>
+
 
 </body>
 </html>
