@@ -19,6 +19,25 @@ body{
     background:#0f172a;
     color:#e2e8f0;
 }
+/* FULL PAGE ARCHITECTURE GRID */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:60px 60px;
+    pointer-events:none;
+    z-index:0;
+    animation:gridMove 40s linear infinite;
+}
+
+@keyframes gridMove{
+    from{transform:translateY(0);}
+    to{transform:translateY(60px);}
+}
+
 /* NAVBAR */
 .navbar{
     position:fixed;
@@ -167,12 +186,12 @@ body{
 /* ================= SECTION ================= */
 
 .section{
-    padding:50px 8% 80px;
+    padding:50px 8% 40px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:60px;
-    min-height:100vh;
+    min-height:80vh;
 }
 
 /* LEFT CONTENT */
@@ -362,6 +381,115 @@ body{
     from { left: -150%; }
     to { left: 150%; }
 }
+/* ================= WHAT WE DELIVER ================= */
+
+.deliver-section{
+    padding:120px 12%;
+    max-width:1300px;
+    margin:auto;
+}
+
+.deliver-title{
+    text-align:center;
+    font-size:42px;
+    font-weight:600;
+    margin-bottom:80px;
+    color:#fff;
+}
+
+.deliver-list{
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+}
+
+.deliver-item{
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    padding-bottom:20px;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.deliver-item h3{
+    font-size:22px;
+    font-weight:500;
+    color:#fff;
+    transition:0.3s;
+}
+
+.deliver-item:hover h3{
+    color:#00e0ff;
+}
+
+/* Hidden content */
+.deliver-content{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:60px;
+    align-items:center;
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(10px);
+    transition:all 0.4s ease;
+}
+
+.deliver-item.active .deliver-content{
+    max-height:600px;
+    opacity:1;
+    transform:translateY(0);
+    margin-top:25px;
+}
+
+.deliver-text p{
+    font-size:14px;
+    opacity:0.8;
+    margin-bottom:10px;
+}
+
+.deliver-text ul{
+    list-style:none;
+    padding-left:0;
+}
+
+.deliver-text li{
+    font-size:14px;
+    opacity:0.75;
+    margin-bottom:8px;
+}
+
+.deliver-image img{
+    width:100%;
+    border-radius:14px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.4);
+    transition:0.4s ease;
+}
+
+.deliver-item.active .deliver-image img{
+    transform:scale(1.03);
+}
+
+/* Mobile */
+@media(max-width:900px){
+    .deliver-section{
+        padding:80px 6%;
+    }
+
+    .deliver-title{
+        font-size:30px;
+        margin-bottom:50px;
+    }
+
+    .deliver-content{
+        grid-template-columns:1fr;
+        gap:25px;
+    }
+
+    .deliver-item h3{
+        font-size:18px;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -382,6 +510,7 @@ body{
                 <a href="index.html#home" class="nav-item">Home</a>
                 <a href="index.html#what" class="nav-item">What We Do</a>
                 <a href="index.html#why" class="nav-item">Why Choose Us</a>
+                <a href="about.html" class="nav-item">About Us </a>
             </nav>
 
             <div class="nav-btn">
@@ -401,7 +530,7 @@ body{
 </header>
 <section class="section">
 <div class="content">
-<h1>Managed Cloud Operations</h1>
+<h1>Continuous Operations, Monitoring & Optimization (AWS & Azure)</h1>
 
 <p>
 We provide ongoing cloud monitoring, incident response,
@@ -418,6 +547,144 @@ and proactive maintenance for production workloads.
 <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31" alt="Managed Operations">
 </div>
 </section>
+<section class="deliver-section">
+
+    <h2 class="deliver-title">What We Deliver</h2>
+
+    <div class="deliver-list">
+
+        <div class="deliver-item">
+            <h3>24×7 Infrastructure Monitoring</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Continuous visibility into system health and performance.</p>
+                    <ul>
+                        <li>Infrastructure and workload monitoring</li>
+                        <li>Resource utilization tracking</li>
+                        <li>Availability and uptime monitoring</li>
+                        <li>Automated alerting and incident visibility</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Infrastructure Monitoring">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>Cloud Operations Management</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Day-to-day operational management of cloud environments.</p>
+                    <ul>
+                        <li>Compute, storage, and network management</li>
+                        <li>Environment health checks</li>
+                        <li>Capacity planning</li>
+                        <li>Operational issue resolution</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa" alt="Cloud Operations">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>AI System Operations (AIOps)</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Operational management of production AI and RAG systems.</p>
+                    <ul>
+                        <li>AI service performance monitoring</li>
+                        <li>Inference workload stability</li>
+                        <li>Data pipeline health monitoring</li>
+                        <li>Model service availability management</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="AI Operations">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>Performance Optimization</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Continuous improvement of system efficiency.</p>
+                    <ul>
+                        <li>Workload performance tuning</li>
+                        <li>Scaling optimization</li>
+                        <li>Resource utilization improvements</li>
+                        <li>Architecture refinement recommendations</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f" alt="Performance Optimization">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>Security & Compliance Operations</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Ongoing protection and governance enforcement.</p>
+                    <ul>
+                        <li>Continuous security monitoring</li>
+                        <li>Patch and configuration management</li>
+                        <li>Access review and policy enforcement</li>
+                        <li>Audit and operational logging oversight</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" alt="Security Operations">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>Cost & Usage Optimization</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Operational FinOps integrated into daily management.</p>
+                    <ul>
+                        <li>Usage trend monitoring</li>
+                        <li>Cost anomaly detection</li>
+                        <li>Optimization recommendations</li>
+                        <li>Continuous efficiency improvements</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="Cost Optimization">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+const items = document.querySelectorAll(".deliver-item");
+
+items.forEach(item => {
+
+    item.addEventListener("mouseenter", () => {
+        item.classList.add("active");
+    });
+
+    item.addEventListener("mouseleave", () => {
+        item.classList.remove("active");
+    });
+
+    item.addEventListener("click", () => {
+        item.classList.toggle("active");
+    });
+
+});
+</script>
+
+
 
 </body>
 </html>
