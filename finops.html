@@ -19,6 +19,24 @@ body{
     background:#0f172a;
     color:#e2e8f0;
 }
+/* FULL PAGE ARCHITECTURE GRID */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:60px 60px;
+    pointer-events:none;
+    z-index:0;
+    animation:gridMove 40s linear infinite;
+}
+
+@keyframes gridMove{
+    from{transform:translateY(0);}
+    to{transform:translateY(60px);}
+}
 /* NAVBAR */
 .navbar{
     position:fixed;
@@ -167,12 +185,12 @@ body{
 /* ================= SECTION ================= */
 
 .section{
-    padding:50px 8% 80px;
+    padding:50px 8% 40px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:60px;
-    min-height:100vh;
+    min-height:80vh;
 }
 
 /* LEFT CONTENT */
@@ -362,6 +380,115 @@ body{
     from { left: -150%; }
     to { left: 150%; }
 }
+/* ================= WHAT WE DELIVER ================= */
+
+.deliver-section{
+    padding:120px 12%;
+    max-width:1300px;
+    margin:auto;
+}
+
+.deliver-title{
+    text-align:center;
+    font-size:42px;
+    font-weight:600;
+    margin-bottom:80px;
+    color:#fff;
+}
+
+.deliver-list{
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+}
+
+.deliver-item{
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    padding-bottom:20px;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.deliver-item h3{
+    font-size:22px;
+    font-weight:500;
+    color:#fff;
+    transition:0.3s;
+}
+
+.deliver-item:hover h3{
+    color:#00e0ff;
+}
+
+/* Hidden content */
+.deliver-content{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:60px;
+    align-items:center;
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(10px);
+    transition:all 0.4s ease;
+}
+
+.deliver-item.active .deliver-content{
+    max-height:600px;
+    opacity:1;
+    transform:translateY(0);
+    margin-top:25px;
+}
+
+.deliver-text p{
+    font-size:14px;
+    opacity:0.8;
+    margin-bottom:10px;
+}
+
+.deliver-text ul{
+    list-style:none;
+    padding-left:0;
+}
+
+.deliver-text li{
+    font-size:14px;
+    opacity:0.75;
+    margin-bottom:8px;
+}
+
+.deliver-image img{
+    width:100%;
+    border-radius:14px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.4);
+    transition:0.4s ease;
+}
+
+.deliver-item.active .deliver-image img{
+    transform:scale(1.03);
+}
+
+/* Mobile */
+@media(max-width:900px){
+    .deliver-section{
+        padding:80px 6%;
+    }
+
+    .deliver-title{
+        font-size:30px;
+        margin-bottom:50px;
+    }
+
+    .deliver-content{
+        grid-template-columns:1fr;
+        gap:25px;
+    }
+
+    .deliver-item h3{
+        font-size:18px;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -382,6 +509,7 @@ body{
                 <a href="index.html#home" class="nav-item">Home</a>
                 <a href="index.html#what" class="nav-item">What We Do</a>
                 <a href="index.html#why" class="nav-item">Why Choose Us</a>
+                <a href="about.html" class="nav-item">About Us </a>
             </nav>
 
             <div class="nav-btn">
@@ -401,7 +529,7 @@ body{
 </header>
 <section class="section">
 <div class="content">
-<h1>FinOps & Cost Optimization</h1>
+<h1>Engineering Cost-Efficient Cloud Operations (AWS & Azure)</h1>
 
 <p>
 We implement FinOps strategies that provide complete visibility into
@@ -419,6 +547,124 @@ architecture evaluation, we ensure efficient and sustainable growth.
 <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f" alt="FinOps">
 </div>
 </section>
+<section class="deliver-section">
+
+    <h2 class="deliver-title">What We Deliver</h2>
+
+    <div class="deliver-list">
+
+        <div class="deliver-item">
+            <h3>Cloud Cost Assessment</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Comprehensive analysis of cloud usage patterns to identify inefficiencies and optimization opportunities.</p>
+                    <ul>
+                        <li>Resource utilization analysis</li>
+                        <li>Idle and over-provisioned workload detection</li>
+                        <li>Storage and compute optimization review</li>
+                        <li>Architecture efficiency evaluation</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f" alt="Cloud Cost Assessment">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>Right-Sizing & Resource Optimization</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Align infrastructure capacity with real workload demand.</p>
+                    <ul>
+                        <li>Compute and database right-sizing</li>
+                        <li>Auto-scaling strategy implementation</li>
+                        <li>Storage tier optimization</li>
+                        <li>Reserved and savings planning strategies</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31" alt="Resource Optimization">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>Cost Visibility & Allocation</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Clear understanding of where and how cloud spending occurs.</p>
+                    <ul>
+                        <li>Cost allocation and tagging strategy</li>
+                        <li>Team and workload-level cost tracking</li>
+                        <li>Usage visibility dashboards</li>
+                        <li>Department or product-based cost insights</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa" alt="Cost Visibility">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>Automation-Driven Cost Control</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Prevent uncontrolled spending through automated governance.</p>
+                    <ul>
+                        <li>Scheduled resource management</li>
+                        <li>Non-production environment automation</li>
+                        <li>Policy-based cost controls</li>
+                        <li>Budget alerts and anomaly detection</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" alt="Cost Control Automation">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>Architecture-Level Optimization</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Long-term cost efficiency through better system design.</p>
+                    <ul>
+                        <li>Serverless and managed service evaluation</li>
+                        <li>Data transfer optimization</li>
+                        <li>Storage lifecycle management</li>
+                        <li>Performance-to-cost architecture balancing</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="Architecture Optimization">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<script>
+const items = document.querySelectorAll(".deliver-item");
+
+items.forEach(item => {
+
+    item.addEventListener("mouseenter", () => {
+        item.classList.add("active");
+    });
+
+    item.addEventListener("mouseleave", () => {
+        item.classList.remove("active");
+    });
+
+    item.addEventListener("click", () => {
+        item.classList.toggle("active");
+    });
+
+});
+</script>
+
 
 </body>
 </html>
