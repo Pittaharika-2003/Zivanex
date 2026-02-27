@@ -3,15 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cloud Infrastructure | YourCompany</title>
+<title>Cloud Infrastructure | Zivanex</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* ============================= */
-/* EXECUTIVE CLOUD SECTION */
-/* ============================= */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+/* ================= GLOBAL ================= */
 
 *{
     margin:0;
@@ -23,15 +21,38 @@
 body{
     background:#0f172a;
     color:#e2e8f0;
+    overflow-x:hidden;
+    position:relative;
 }
-/* NAVBAR */
+
+/* FULL PAGE ARCHITECTURE GRID */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:60px 60px;
+    pointer-events:none;
+    z-index:0;
+    animation:gridMove 40s linear infinite;
+}
+
+@keyframes gridMove{
+    from{transform:translateY(0);}
+    to{transform:translateY(60px);}
+}
+
+/* ================= NAVBAR ================= */
+
 .navbar{
     position:fixed;
     width:100%;
     top:0;
     padding:18px 8%;
-    background:rgba(0,0,0,0);
-    backdrop-filter:blur(1px);
+    background:rgba(15,23,42,0.7);
+    backdrop-filter:blur(8px);
     z-index:1000;
 }
 
@@ -51,7 +72,6 @@ body{
     height:42px;
 }
 
-/* LINKS */
 .nav-links{
     display:flex;
     gap:25px;
@@ -59,13 +79,11 @@ body{
 
 .nav-item{
     text-decoration:none;
-    color:whitesmoke;
+    color:white;
     font-weight:500;
     position:relative;
-    transition:.3s;
 }
 
-/* underline */
 .nav-item::after{
     content:"";
     position:absolute;
@@ -73,7 +91,7 @@ body{
     left:0;
     width:0%;
     height:2px;
-    background:whitesmoke;
+    background:white;
     transition:.3s;
 }
 
@@ -82,7 +100,6 @@ body{
     width:100%;
 }
 
-/* CTA */
 .nav-btn a{
     padding:10px 22px;
     background:linear-gradient(135deg,#4f46e5,#7c3aed);
@@ -91,7 +108,8 @@ body{
     text-decoration:none;
 }
 
-/* HAMBURGER */
+/* MOBILE NAV */
+
 .hamburger{
     display:none;
     flex-direction:column;
@@ -102,22 +120,20 @@ body{
 .hamburger span{
     width:25px;
     height:3px;
-    background:whitesmoke;
+    background:white;
     transition:.3s;
 }
 
-/* overlay */
 .nav-overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.35);
+    background:rgba(0,0,0,.4);
     backdrop-filter:blur(2px);
     opacity:0;
     pointer-events:none;
     transition:.3s;
 }
 
-/* MOBILE */
 @media(max-width:992px){
 
     .nav-links{
@@ -126,12 +142,11 @@ body{
         right:-100%;
         width:260px;
         height:100vh;
-        background:rgba(255,255,255,.85);
-        backdrop-filter:blur(15px);
+        background:white;
         flex-direction:column;
         padding:90px 30px;
         gap:25px;
-        transition:.45s cubic-bezier(.77,0,.18,1);
+        transition:.45s;
     }
 
     .nav-links.active{
@@ -156,7 +171,6 @@ body{
         display:flex;
     }
 
-    /* hamburger morph */
     .hamburger.active span:nth-child(1){
         transform:rotate(45deg) translate(5px,5px);
     }
@@ -169,278 +183,340 @@ body{
         transform:rotate(-45deg) translate(6px,-6px);
     }
 }
-/* ================= SECTION ================= */
+
+/* ================= HERO ================= */
 
 .cloud-section{
-    padding:120px 8% 80px;
+    padding:50px 8% 40px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:60px;
-    min-height:100vh;
+    min-height:80vh;
+    position:relative;
+    z-index:2;
 }
-
-/* LEFT CONTENT */
 
 .cloud-content{
     flex:1;
-    opacity:0;
-    transform:translateY(40px);
-    animation: fadeUp 0.9s ease forwards;
 }
 
 .cloud-content h1{
     font-size:46px;
     margin-bottom:25px;
-    color:#f8fafc;
-    font-weight:600;
 }
 
 .cloud-content p{
-    font-size:16px;
     line-height:1.8;
-    margin-bottom:25px;
+    margin-bottom:20px;
     color:#cbd5e1;
 }
-
-/* BUTTON */
 
 .call-btn{
     display:inline-block;
     padding:14px 30px;
-    background:#6366f1;
-    color:white;
-    text-decoration:none;
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
     border-radius:8px;
+    text-decoration:none;
+    color:white;
     font-weight:600;
-    transition:0.3s ease;
+    transition:.3s;
 }
 
 .call-btn:hover{
     transform:translateY(-4px);
-    box-shadow:0 15px 35px rgba(0,0,0,0.5);
-}
-
-/* RIGHT IMAGE */
-
-.cloud-image{
-    flex:1;
-    text-align:center;
-    position:relative;
-    opacity:0;
-    transform:translateY(40px);
-    animation: fadeUp 1.1s ease forwards;
+    box-shadow:0 20px 40px rgba(0,0,0,.6);
 }
 
 .cloud-image img{
     width:100%;
     max-width:520px;
-    border-radius:18px;
-    box-shadow:0 30px 70px rgba(0,0,0,0.6);
-    transition: transform 0.6s ease;
+    border-radius:20px;
+    box-shadow:0 30px 80px rgba(0,0,0,.7);
+    animation:float 6s ease-in-out infinite;
 }
 
-/* subtle professional hover */
-.cloud-image:hover img{
-    transform: translateY(-6px);
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
 }
 
-/* Soft background glow behind image */
-.cloud-image::before{
-    content:"";
-    position:absolute;
-    width:420px;
-    height:420px;
-    background:radial-gradient(circle, rgba(99,102,241,0.15), transparent 70%);
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    z-index:-1;
+/* ================= WHAT WE DELIVER ================= */
+
+.deliver-section{
+    padding:120px 12%;
+    max-width:1300px;
+    margin:auto;
 }
 
-/* ================= ANIMATION ================= */
+.deliver-title{
+    text-align:center;
+    font-size:42px;
+    font-weight:600;
+    margin-bottom:80px;
+    color:#fff;
+}
 
-@keyframes fadeUp{
-    to{
-        opacity:1;
-        transform:translateY(0);
+.deliver-list{
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+}
+
+.deliver-item{
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    padding-bottom:20px;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.deliver-item h3{
+    font-size:22px;
+    font-weight:500;
+    color:#fff;
+    transition:0.3s;
+}
+
+.deliver-item:hover h3{
+    color:#00e0ff;
+}
+
+/* Hidden content */
+.deliver-content{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:60px;
+    align-items:center;
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(10px);
+    transition:all 0.4s ease;
+}
+
+.deliver-item.active .deliver-content{
+    max-height:600px;
+    opacity:1;
+    transform:translateY(0);
+    margin-top:25px;
+}
+
+.deliver-text p{
+    font-size:14px;
+    opacity:0.8;
+    margin-bottom:10px;
+}
+
+.deliver-text ul{
+    list-style:none;
+    padding-left:0;
+}
+
+.deliver-text li{
+    font-size:14px;
+    opacity:0.75;
+    margin-bottom:8px;
+}
+
+.deliver-image img{
+    width:100%;
+    border-radius:14px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.4);
+    transition:0.4s ease;
+}
+
+.deliver-item.active .deliver-image img{
+    transform:scale(1.03);
+}
+
+/* Mobile */
+@media(max-width:900px){
+    .deliver-section{
+        padding:80px 6%;
     }
-}
 
-/* ================= MOBILE ================= */
-
-@media(max-width:992px){
-
-    .cloud-section{
-        flex-direction:column;
-        text-align:center;
-        padding:120px 6% 60px;
+    .deliver-title{
+        font-size:30px;
+        margin-bottom:50px;
     }
 
-    .cloud-content h1{
-        font-size:32px;
+    .deliver-content{
+        grid-template-columns:1fr;
+        gap:25px;
     }
 
-    .cloud-image img{
-        margin-top:40px;
+    .deliver-item h3{
+        font-size:18px;
     }
-}
-/* ============================= */
-/* LEVEL 4 – ARCHITECTURAL DEPTH */
-/* ============================= */
-
-/* Subtle Grid Background */
-.cloud-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-    z-index: 0;
-    animation: gridMove 40s linear infinite;
-}
-
-@keyframes gridMove {
-    from { transform: translateY(0); }
-    to { transform: translateY(60px); }
-}
-
-/* Make section relative for grid */
-.cloud-section {
-    position: relative;
-    overflow: hidden;
-}
-
-/* Ensure content above grid */
-.cloud-content,
-.cloud-image {
-    position: relative;
-    z-index: 2;
-}
-
-/* Animated Heading Underline */
-.cloud-content h1 {
-    position: relative;
-    display: inline-block;
-}
-
-.cloud-content h1::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    width: 0%;
-    height: 3px;
-    background: #6366f1;
-    transition: width 1s ease;
-}
-
-.cloud-content:hover h1::after {
-    width: 100%;
-}
-
-/* Image Light Sweep Effect */
-.cloud-image::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -150%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,0.12),
-        transparent
-    );
-    transform: skewX(-20deg);
-}
-
-.cloud-image:hover::after {
-    animation: sweep 1.2s ease forwards;
-}
-
-@keyframes sweep {
-    from { left: -150%; }
-    to { left: 150%; }
 }
 
 </style>
-
 </head>
+
 <body>
+
 <header class="navbar">
-    <div class="nav-container">
+<div class="nav-container">
+<div class="logo">
+<a href="index.html#home">
+<img src="https://res.cloudinary.com/dkhmpija5/image/upload/v1772178236/LOGO-w_l8fvwu.png" alt="Logo">
+</a>
+</div>
 
-        <!-- LOGO -->
-        <div class="logo">
-            <a href="index.html#home">
-                <img src="https://res.cloudinary.com/dkhmpija5/image/upload/v1772178236/LOGO-w_l8fvwu.png" alt="Logo">
-            </a>
-        </div>
+<div class="nav-right">
+<nav class="nav-links" id="navLinks">
+<a href="index.html#home" class="nav-item">Home</a>
+<a href="index.html#what" class="nav-item">What We Do</a>
+<a href="index.html#why" class="nav-item">Why Choose Us</a>
+<a href="about.html" class="nav-item">About Us </a>
+</nav>
 
-        <!-- RIGHT SIDE -->
-        <div class="nav-right">
+<div class="nav-btn">
+<a href="form.html">Get Started</a>
+</div>
 
-            <nav class="nav-links" id="navLinks">
-                <a href="index.html#home" class="nav-item">Home</a>
-                <a href="index.html#what" class="nav-item">What We Do</a>
-                <a href="index.html#why" class="nav-item">Why Choose Us</a>
-            </nav>
-
-            <div class="nav-btn">
-                <a href="form.html">Get Started</a>
-            </div>
-
-            <!-- HAMBURGER -->
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-
-        </div>
-
-    </div>
+<div class="hamburger" id="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+</div>
 </header>
 
-<!-- OVERLAY -->
 <div class="nav-overlay" id="navOverlay"></div>
-</section>
 
+<!-- HERO -->
 <section class="cloud-section">
 
-    <!-- LEFT -->
-    <div class="cloud-content">
-        <h1>Cloud Infrastructure</h1>
+<div class="cloud-content">
+<h1>Engineering Secure, Scalable Cloud Foundations</h1>
+<p>
+We design and implement secure, scalable cloud infrastructure tailored for production environments across AWS and Azure.
+</p>
+<a href="form.html" class="call-btn">Contact Us</a>
+</div>
 
-        <p>
-            We design and implement secure, scalable AWS cloud infrastructure 
-            tailored for production environments. Our architectures are built 
-            with reliability, high availability, and operational excellence 
-            as core priorities — ensuring your systems perform under real-world demand.
-        </p>
-
-        <p>
-            From VPC architecture and container orchestration to CI/CD pipelines 
-            and infrastructure as code, we engineer cloud foundations that are 
-            optimized for cost, security, and long-term scalability.
-        </p>
-
-        <a href="form.html" class="call-btn">
-            Contact Us
-        </a>
-    </div>
-
-    <!-- RIGHT -->
-    <div class="cloud-image">
-        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa" alt="Cloud Infrastructure">
-    </div>
+<div class="cloud-image">
+<img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa">
+</div>
 
 </section>
+
+<section class="deliver-section">
+
+    <h2 class="deliver-title">What We Deliver</h2>
+
+    <div class="deliver-list">
+
+        <div class="deliver-item">
+            <h3>Cloud Architecture Design</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>Design of highly available and fault-tolerant infrastructure aligned with workload requirements and business growth.</p>
+                    <ul>
+                        <li>Multi-region & high-availability architecture</li>
+                        <li>Network segmentation & isolation</li>
+                        <li>Scalable compute & storage design</li>
+                        <li>Workload-specific infrastructure planning</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa" alt="Cloud Architecture">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>Landing Zone & Environment Setup</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <ul>
+                        <li>AWS & Azure landing zone setup</li>
+                        <li>Account / subscription architecture</li>
+                        <li>Identity and access structure</li>
+                        <li>Policy and governance baseline</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31" alt="Landing Zone">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>Network Architecture</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <ul>
+                        <li>Virtual networks / VPC architecture</li>
+                        <li>Private connectivity & segmentation</li>
+                        <li>Hybrid & on-premise integration</li>
+                        <li>Secure internet & internal routing</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="Network">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>High Availability & Disaster Recovery</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <ul>
+                        <li>Backup & recovery strategy</li>
+                        <li>Cross-zone & cross-region resilience</li>
+                        <li>Automated failover design</li>
+                        <li>Business continuity planning</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" alt="Disaster Recovery">
+                </div>
+            </div>
+        </div>
+
+        <div class="deliver-item">
+            <h3>Infrastructure as Code (IaC)</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <ul>
+                        <li>Terraform / native automation</li>
+                        <li>Version-controlled infrastructure</li>
+                        <li>Environment replication</li>
+                        <li>Automated provisioning workflows</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="IaC">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+const items = document.querySelectorAll(".deliver-item");
+
+items.forEach(item => {
+
+    item.addEventListener("mouseenter", () => {
+        item.classList.add("active");
+    });
+
+    item.addEventListener("mouseleave", () => {
+        item.classList.remove("active");
+    });
+
+    item.addEventListener("click", () => {
+        item.classList.toggle("active");
+    });
+
+});
+</script>
 
 </body>
 </html>
