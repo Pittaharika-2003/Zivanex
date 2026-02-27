@@ -18,7 +18,7 @@ body {
     width:100%;
     top:0;
     padding:18px 8%;
-    background:rgba(255,255,255,0.55);
+    background:black;
     backdrop-filter:blur(1px);
     z-index:1000;
 }
@@ -36,7 +36,7 @@ body {
 }
 
 .logo img{
-    height:22px;
+    height:45px;
 }
 
 /* LINKS */
@@ -1537,3 +1537,4 @@ body {
 body {
     border: 5px solid rgb(251, 245, 245) !important;
 }
+
