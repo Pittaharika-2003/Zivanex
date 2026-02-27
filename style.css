@@ -18,7 +18,7 @@ body {
     width:100%;
     top:0;
     padding:18px 8%;
-    background:black;
+    background:rgba(255, 255, 255, 0.448);
     backdrop-filter:blur(1px);
     z-index:1000;
 }
@@ -1537,4 +1537,5 @@ body {
 body {
     border: 5px solid rgb(251, 245, 245) !important;
 }
+
 
