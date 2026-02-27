@@ -18,7 +18,7 @@ body {
     width:100%;
     top:0;
     padding:18px 8%;
-    background:rgba(255, 255, 255, 0.448);
+    background:rgba(0, 0, 0, 0);
     backdrop-filter:blur(1px);
     z-index:1000;
 }
@@ -47,7 +47,7 @@ body {
 
 .nav-item{
     text-decoration:none;
-    color:rgb(24, 23, 23);
+    color:whitesmoke;
     font-weight:500;
     position:relative;
     transition:.3s;
@@ -61,7 +61,7 @@ body {
     left:0;
     width:0%;
     height:2px;
-    background:#151515;
+    background:whitesmoke;
     transition:.3s;
 }
 
@@ -90,7 +90,7 @@ body {
 .hamburger span{
     width:25px;
     height:3px;
-    background:#111;
+    background:whitesmoke;
     transition:.3s;
 }
 
@@ -161,7 +161,7 @@ body {
 .hero {
     padding-top: 50px;
     padding-bottom: 20px;
-    min-height: 80vh;
+    min-height: 120vh;
     display: flex;
     align-items: center;
     position: relative;
@@ -1537,5 +1537,6 @@ body {
 body {
     border: 5px solid rgb(251, 245, 245) !important;
 }
+
 
 
