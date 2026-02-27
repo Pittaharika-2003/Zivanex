@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Zivanex</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+/* ===============================
+   BODY – LEVEL 5 BASE
+================================ */
+
+body{
+    color:#e5e7eb;
+    overflow-x:hidden;
+    background:
+        radial-gradient(circle at 50% 30%, rgba(59,130,246,0.12), transparent 45%),
+        radial-gradient(circle at 20% 80%, rgba(99,102,241,0.08), transparent 45%),
+        linear-gradient(180deg,#020617 0%, #0b1120 60%, #020617 100%);
+    background-attachment: fixed;
+}
+/* NAVBAR */
+.navbar{
+    position:fixed;
+    width:100%;
+    top:0;
+    padding:18px 8%;
+    background:rgba(0,0,0,0);
+    backdrop-filter:blur(1px);
+    z-index:1000;
+}
+
+.nav-container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.logo img{
+    height:42px;
+}
+
+/* LINKS */
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-item{
+    text-decoration:none;
+    color:whitesmoke;
+    font-weight:500;
+    position:relative;
+    transition:.3s;
+}
+
+
+/* underline */
+.nav-item::after{
+    content:"";
+    position:absolute;
+    bottom:-6px;
+    left:0;
+    width:0%;
+    height:2px;
+    background:whitesmoke;
+    transition:.3s;
+}
+
+.nav-item:hover::after,
+.nav-item.active::after{
+    width:100%;
+}
+
+/* CTA */
+.nav-btn a{
+    padding:10px 22px;
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    color:white;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+/* HAMBURGER */
+.hamburger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+}
+
+.hamburger span{
+    width:25px;
+    height:3px;
+    background:whitesmoke;
+    transition:.3s;
+}
+
+/* overlay */
+.nav-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(2px);
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+}
+
+/* MOBILE */
+@media(max-width:992px){
+
+    .nav-links{
+        position:fixed;
+        top:0;
+        right:-100%;
+        width:260px;
+        height:100vh;
+        background:rgba(255,255,255,.85);
+        backdrop-filter:blur(15px);
+        flex-direction:column;
+        padding:90px 30px;
+        gap:25px;
+        transition:.45s cubic-bezier(.77,0,.18,1);
+    }
+
+    .nav-links.active{
+        right:0;
+    }
+
+    .nav-overlay.active{
+        opacity:1;
+        pointer-events:auto;
+    }
+
+    .nav-item{
+        color:#111;
+        font-size:18px;
+    }
+
+    .nav-btn{
+        display:none;
+    }
+
+    .hamburger{
+        display:flex;
+    }
+
+    /* hamburger morph */
+    .hamburger.active span:nth-child(1){
+        transform:rotate(45deg) translate(5px,5px);
+    }
+
+    .hamburger.active span:nth-child(2){
+        opacity:0;
+    }
+
+    .hamburger.active span:nth-child(3){
+        transform:rotate(-45deg) translate(6px,-6px);
+    }
+}
+/* ===============================
+   LEVEL 7 – CINEMATIC HYPERSCALE
+================================ */
+
+body{
+    margin:0;
+    color:#e5e7eb;
+    overflow-x:hidden;
+    background: linear-gradient(180deg,#010409 0%, #0b1120 60%, #010409 100%);
+}
+
+/* Container */
+.infra-cinematic{
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    overflow: hidden;
+    perspective: 1200px;
+}
+
+/* 3D Grid Layer */
+.grid-layer{
+    position:absolute;
+    width:200%;
+    height:200%;
+    top:-50%;
+    left:-50%;
+
+    background-image:
+        linear-gradient(rgba(59,130,246,0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.2) 1px, transparent 1px);
+
+    background-size: 80px 80px;
+
+    transform: rotateX(75deg);
+    transform-origin:center;
+    animation: gridMove 15s linear infinite;
+}
+
+@keyframes gridMove{
+    from{ transform: rotateX(75deg) translateY(0); }
+    to{ transform: rotateX(75deg) translateY(80px); }
+}
+
+/* Particle Field */
+.particles{
+    position:absolute;
+    inset:0;
+    background-image: radial-gradient(rgba(59,130,246,0.5) 1px, transparent 1px);
+    background-size: 120px 120px;
+    opacity:0.15;
+    animation: particleFloat 30s linear infinite;
+}
+
+@keyframes particleFloat{
+    from{ background-position:0 0; }
+    to{ background-position:300px 300px; }
+}
+
+/* Glow Orb */
+.glow-orb{
+    position:absolute;
+    width:900px;
+    height:900px;
+    background: radial-gradient(circle, rgba(59,130,246,0.35), transparent 70%);
+    top:-300px;
+    left:-300px;
+    animation: orbFloat 20s ease-in-out infinite alternate;
+}
+
+@keyframes orbFloat{
+    0%{ transform:translate(0,0); }
+    100%{ transform:translate(300px,200px); }
+}
+/* Data flow */
+.data-flow{
+    position: fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-2;
+    background-image:
+        repeating-linear-gradient(
+            90deg,
+            rgba(59,130,246,0.06) 0px,
+            rgba(59,130,246,0.06) 2px,
+            transparent 2px,
+            transparent 220px
+        );
+    animation: flowMove 25s linear infinite;
+}
+
+@keyframes flowMove{
+    from{ background-position: 0 0; }
+    to{ background-position: 400px 0; }
+}
+
+/* Ambient glow */
+body::before{
+    content:"";
+    position: fixed;
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle, rgba(59,130,246,0.18), transparent 65%);
+    top:-300px;
+    left:-300px;
+    animation: floatLight 20s ease-in-out infinite alternate;
+    z-index:-4;
+}
+
+@keyframes floatLight{
+    0%{ transform: translate(0,0); }
+    100%{ transform: translate(250px,180px); }
+}
+
+/* ===============================
+   HERO
+================================ */
+
+.about-hero {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent; 
+   
+}
+
+.about-overlay {
+    position: absolute;
+    inset: 0;
+    
+}
+
+.about-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    text-align:left;
+    background: transparent; 
+}
+
+.about-content h1 {
+    font-size: 48px;
+    margin-bottom: 40px;
+    background: transparent; 
+}
+
+/* ===============================
+   AI SECTION
+================================ */
+
+.ai-section {
+    padding: 20px 6%;
+    background: transparent;   /* FIXED */
+}
+
+.ai-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* Cards */
+.ai-card {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: transform 0.6s cubic-bezier(.19,1,.22,1);
+}
+
+.ai-card:hover {
+    transform: translateY(-10px);
+}
+
+.ai-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    transition: transform 2s ease, filter 0.8s ease;
+    animation: cinematicZoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes cinematicZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.12); }
+}
+
+.ai-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2));
+    z-index: 2;
+}
+
+.ai-title {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+    z-index: 4;
+    transition: 0.5s ease;
+    text-align: center;
+}
+
+.ai-content {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(14px);
+    background: rgba(10, 15, 25, 0.7);
+    padding: 50px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(.19,1,.22,1);
+    z-index: 3;
+}
+
+.ai-content h3{
+    margin-bottom:20px;
+}
+
+.ai-card:hover .ai-bg {
+    filter: blur(8px) brightness(0.7);
+    transform: scale(1.15);
+}
+
+.ai-card:hover .ai-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ai-card:hover .ai-title {
+    opacity: 0;
+}
+
+/* Mobile */
+@media(max-width: 992px) {
+    .ai-container {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+</head>
+<body>
+<div class="infra-cinematic"></div>
+<div class="grid-layer"></div>
+<div class="particles"></div>
+<div class="glow-orb"></div>
+<header class="navbar">
+    <div class="nav-container">
+
+        <!-- LOGO -->
+        <div class="logo">
+            <a href="index.html#home">
+                <img src="https://res.cloudinary.com/dkhmpija5/image/upload/v1772178236/LOGO-w_l8fvwu.png" alt="Logo">
+            </a>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="nav-right">
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html#home" class="nav-item">Home</a>
+                <a href="index.html#what" class="nav-item">What We Do</a>
+                <a href="index.html#why" class="nav-item">Why Choose Us</a>
+                <a href="about.html" class="nav-item">About Us </a>
+            </nav>
+
+            <div class="nav-btn">
+                <a href="form.html">Get Started</a>
+            </div>
+
+            <!-- HAMBURGER -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+    </div>
+</header>
+
+<section class="about-hero" id="hero">
+    <div class="about-overlay"></div>
+
+    <div class="about-content">
+        <h1>About Us</h1>
+
+        <div class="about-text">
+            <h2>Who We Are</h2>
+            <p>
+                We are a cloud and AI engineering company focused on building
+                secure, scalable, and production-ready platforms. Our mission is
+                to help organizations adopt modern cloud and AI technologies
+                with confidence and long-term sustainability.
+            </p>
+        </div>
+    </div>
+</section>
+<section class="ai-section">
+    <div class="ai-container">
+
+        <!-- AI SHIFT -->
+        <div class="ai-card">
+            <div class="ai-bg" style="background-image:url('https://www.orfonline.org/public/uploads/posts/image/1740643766_img-ai-saas.jpg');"></div>
+            
+            <div class="ai-content">
+                <h3>The AI Shift</h3>
+                <p>
+                    Artificial intelligence is rapidly evolving through GPU-powered computing,
+                    RAG architectures, and emerging AI agents. Moving these systems from
+                    experimentation to production requires resilient infrastructure,
+                    controlled costs, and operational maturity. We support organizations
+                    in adopting AI responsibly by enabling stable and scalable cloud
+                    foundations for intelligent workloads.
+                </p>
+            </div>
+
+            <div class="ai-title">The AI Shift</div>
+        </div>
+
+
+        <!-- OUR ROLE -->
+        <div class="ai-card">
+            <div class="ai-bg" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200');"></div>
+            
+            <div class="ai-content">
+                <h3>Our Role</h3>
+                <p>
+                    We help businesses run GPU-intensive AI applications and
+                    next-generation intelligent systems efficiently and securely.
+                    By combining cloud engineering with AI platform expertise,
+                    we enable organizations to scale innovation while maintaining
+                    performance, governance, and cost efficiency.
+                </p>
+            </div>
+
+            <div class="ai-title">Our Role</div>
+        </div>
+
+
+        <!-- OUR MISSION -->
+        <div class="ai-card">
+            <div class="ai-bg" style="background-image:url('data:image/jpeg;base64,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');"></div>
+            
+            <div class="ai-content">
+                <h3>Our Mission</h3>
+                <p>
+                    To enable organizations to adopt cloud and AI technologies
+                    with confidence by engineering reliable, secure, and scalable
+                    platforms for production-ready systems.
+                </p>
+            </div>
+
+            <div class="ai-title">Our Mission</div>
+        </div>
+
+    </div>
+</section>
+<script>
+
+const grid = document.querySelector('.grid-layer');
+
+document.addEventListener('mousemove', (e) => {
+    let x = (e.clientX / window.innerWidth - 0.5) * 20;
+    let y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+    grid.style.transform = `rotateX(${75 - y/5}deg) rotateY(${x/5}deg) translateY(40px)`;
+});
+</script>
+
+
+
+</body>
+</html>
