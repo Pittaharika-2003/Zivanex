@@ -19,6 +19,24 @@ body{
     background:#0f172a;
     color:#e2e8f0;
 }
+/* FULL PAGE ARCHITECTURE GRID */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:60px 60px;
+    pointer-events:none;
+    z-index:0;
+    animation:gridMove 40s linear infinite;
+}
+
+@keyframes gridMove{
+    from{transform:translateY(0);}
+    to{transform:translateY(60px);}
+}
 /* NAVBAR */
 .navbar{
     position:fixed;
@@ -168,12 +186,12 @@ body{
 /* ================= SECTION ================= */
 
 .section{
-    padding:50px 8% 80px;
+    padding:50px 8% 40px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:60px;
-    min-height:100vh;
+    min-height:80vh;
 }
 
 /* LEFT CONTENT */
@@ -363,6 +381,117 @@ body{
     from { left: -150%; }
     to { left: 150%; }
 }
+/* ================= WHAT WE DELIVER ================= */
+
+.deliver-section{
+    padding:30px 12%;
+    max-width:1300px;
+    margin:auto;
+    margin-top: -40px;
+    
+}
+
+.deliver-title{
+    text-align:center;
+    font-size:42px;
+    font-weight:600;
+    margin-bottom:80px;
+    color:#fff;
+}
+
+.deliver-list{
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+}
+
+.deliver-item{
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    padding-bottom:20px;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.deliver-item h3{
+    font-size:22px;
+    font-weight:500;
+    color:#fff;
+    transition:0.3s;
+}
+
+.deliver-item:hover h3{
+    color:#00e0ff;
+}
+
+/* Hidden content */
+.deliver-content{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:60px;
+    align-items:center;
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(10px);
+    transition:all 0.4s ease;
+}
+
+.deliver-item.active .deliver-content{
+    max-height:600px;
+    opacity:1;
+    transform:translateY(0);
+    margin-top:25px;
+}
+
+.deliver-text p{
+    font-size:14px;
+    opacity:0.8;
+    margin-bottom:10px;
+}
+
+.deliver-text ul{
+    list-style:none;
+    padding-left:0;
+}
+
+.deliver-text li{
+    font-size:14px;
+    opacity:0.75;
+    margin-bottom:8px;
+}
+
+.deliver-image img{
+    width:100%;
+    border-radius:14px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.4);
+    transition:0.4s ease;
+}
+
+.deliver-item.active .deliver-image img{
+    transform:scale(1.03);
+}
+
+/* Mobile */
+@media(max-width:900px){
+    .deliver-section{
+        padding:80px 6%;
+    }
+
+    .deliver-title{
+        font-size:30px;
+        margin-bottom:50px;
+    }
+
+    .deliver-content{
+        grid-template-columns:1fr;
+        gap:25px;
+    }
+
+    .deliver-item h3{
+        font-size:18px;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -383,6 +512,7 @@ body{
                 <a href="index.html#home" class="nav-item">Home</a>
                 <a href="index.html#what" class="nav-item">What We Do</a>
                 <a href="index.html#why" class="nav-item">Why Choose Us</a>
+                <a href="about.html" class="nav-item">About Us </a>
             </nav>
 
             <div class="nav-btn">
@@ -406,7 +536,7 @@ body{
 </section>
 <section class="section">
 <div class="content">
-<h1>AI & RAG Engineering</h1>
+<h1>Production-Ready AI Systems Built for Real-World Workloads</h1>
 
 <p>
 We build production-ready AI systems powered by Retrieval-Augmented
@@ -423,6 +553,142 @@ we engineer intelligent systems that scale reliably.
 <div class="image">
 <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995" alt="AI Engineering">
 </section>
+<section class="deliver-section">
 
+    <h2 class="deliver-title">What We Deliver</h2>
+
+    <div class="deliver-list">
+
+        <!-- 1 -->
+        <div class="deliver-item">
+            <h3>RAG Architecture Design</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <p>AI systems that retrieve and reason over enterprise data securely and efficiently.</p>
+                    <ul>
+                        <li>Document ingestion pipelines</li>
+                        <li>Vector database integration</li>
+                        <li>Semantic search architecture</li>
+                        <li>Context-aware retrieval systems</li>
+                        <li>Enterprise knowledge assistants</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995" alt="RAG Architecture">
+                </div>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="deliver-item">
+            <h3>AI Application Engineering</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <ul>
+                        <li>LLM-powered applications</li>
+                        <li>Intelligent automation workflows</li>
+                        <li>Conversational AI systems</li>
+                        <li>Internal enterprise AI platforms</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485" alt="AI Applications">
+                </div>
+            </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="deliver-item">
+            <h3>Data Pipeline & Integration</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <ul>
+                        <li>Structured & unstructured data ingestion</li>
+                        <li>Secure data processing pipelines</li>
+                        <li>API & application integration</li>
+                        <li>Real-time & batch workflows</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="Data Pipeline">
+                </div>
+            </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="deliver-item">
+            <h3>Model Deployment & Scaling</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <ul>
+                        <li>Model hosting & inference architecture</li>
+                        <li>Scalable compute design</li>
+                        <li>API-based AI services</li>
+                        <li>Performance optimization</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" alt="Model Deployment">
+                </div>
+            </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="deliver-item">
+            <h3>AI Observability & Monitoring</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <ul>
+                        <li>Usage & response monitoring</li>
+                        <li>Latency & performance tracking</li>
+                        <li>Prompt & response analytics</li>
+                        <li>Operational health monitoring</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="AI Monitoring">
+                </div>
+            </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="deliver-item">
+            <h3>Secure AI Infrastructure</h3>
+            <div class="deliver-content">
+                <div class="deliver-text">
+                    <ul>
+                        <li>Access-controlled data pipelines</li>
+                        <li>Encryption & data protection</li>
+                        <li>Isolation of AI workloads</li>
+                        <li>Compliance-aware architecture</li>
+                    </ul>
+                </div>
+                <div class="deliver-image">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="Secure AI">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<script>
+const aiItems = document.querySelectorAll(".deliver-item");
+
+aiItems.forEach(item=>{
+
+    item.addEventListener("mouseenter",()=>{
+        item.classList.add("active");
+    });
+
+    item.addEventListener("mouseleave",()=>{
+        item.classList.remove("active");
+    });
+
+    item.addEventListener("click",()=>{
+        item.classList.toggle("active");
+    });
+
+});
+</script>
 </body>
 </html>
