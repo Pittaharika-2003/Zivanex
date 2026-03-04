@@ -380,70 +380,123 @@ body::before{
     from { left: -150%; }
     to { left: 150%; }
 }
-/* ================= WHAT WE DELIVER ================= */
+/* ================= WHAT WE DELIVER SECTION ================= */
 
 .deliver-section{
     padding:120px 12%;
     max-width:1300px;
     margin:auto;
+    position:relative;
 }
 
+/* Background glow animation */
+.deliver-section::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(0,224,255,0.15), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(124,58,237,0.15), transparent 40%);
+    z-index:-1;
+    animation:floatBg 12s ease-in-out infinite alternate;
+}
+
+@keyframes floatBg{
+    from{transform:translateY(0px);}
+    to{transform:translateY(-30px);}
+}
+
+/* Title */
 .deliver-title{
     text-align:center;
     font-size:42px;
     font-weight:600;
     margin-bottom:80px;
     color:#fff;
+    letter-spacing:1px;
 }
 
-.deliver-list{
-    display:flex;
-    flex-direction:column;
-    gap:40px;
-}
-
+/* Card */
 .deliver-item{
-    border-bottom:1px solid rgba(255,255,255,0.08);
-    padding-bottom:20px;
+    position:relative;
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.03);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.05);
+    transition:all .4s ease;
     cursor:pointer;
-    transition:0.3s ease;
+    overflow:hidden;
+    margin-bottom:30px;
 }
 
+/* Glow when active */
+.deliver-item.active{
+    box-shadow:0 0 40px rgba(0,224,255,0.15);
+    animation:glowPulse 3s infinite alternate;
+}
+
+@keyframes glowPulse{
+    from{box-shadow:0 0 20px rgba(0,224,255,0.15);}
+    to{box-shadow:0 0 60px rgba(124,58,237,0.25);}
+}
+
+/* Header */
 .deliver-item h3{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     font-size:22px;
     font-weight:500;
     color:#fff;
     transition:0.3s;
 }
 
-.deliver-item:hover h3{
-    color:#00e0ff;
+/* Arrow */
+.arrow{
+    width:18px;
+    height:18px;
+    border-right:2px solid #00e0ff;
+    border-bottom:2px solid #00e0ff;
+    transform:rotate(45deg);
+    transition:.4s ease;
 }
 
-/* Hidden content */
+.deliver-item.active .arrow{
+    transform:rotate(-135deg);
+}
+
+/* ================= ACCORDION CONTENT ================= */
+
 .deliver-content{
     display:grid;
     grid-template-columns:1.2fr 1fr;
     gap:60px;
     align-items:center;
+
     max-height:0;
     overflow:hidden;
     opacity:0;
     transform:translateY(10px);
-    transition:all 0.4s ease;
+    transition:
+        max-height 0.5s ease,
+        opacity 0.4s ease,
+        transform 0.4s ease;
 }
 
 .deliver-item.active .deliver-content{
-    max-height:600px;
+    max-height:1000px; /* enough height */
     opacity:1;
     transform:translateY(0);
     margin-top:25px;
 }
 
+/* Text */
 .deliver-text p{
     font-size:14px;
-    opacity:0.8;
-    margin-bottom:10px;
+    opacity:0.85;
+    margin-bottom:15px;
+    line-height:1.6;
 }
 
 .deliver-text ul{
@@ -457,15 +510,149 @@ body::before{
     margin-bottom:8px;
 }
 
+/* Image */
+.deliver-image{
+    overflow:hidden;
+}
+
 .deliver-image img{
     width:100%;
     border-radius:14px;
     box-shadow:0 20px 50px rgba(0,0,0,0.4);
-    transition:0.4s ease;
+    transition:0.6s ease;
 }
 
 .deliver-item.active .deliver-image img{
-    transform:scale(1.03);
+    transform:scale(1.05);
+    box-shadow:0 25px 70px rgba(0,224,255,0.3);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+    .deliver-section{
+        padding:80px 6%;
+    }
+
+    .deliver-title{
+        font-size:30px;
+        margin-bottom:50px;
+    }
+
+    .deliver-content{
+        grid-template-columns:1fr;
+        gap:25px;
+    }
+
+    .deliver-item{
+        padding:22px;
+    }
+
+    .deliver-item h3{
+        font-size:18px;
+    }
+}
+/* ================= TECH PARTICLE BACKGROUND ================= */
+
+.deliver-section::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(0,224,255,0.15), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(124,58,237,0.15), transparent 40%);
+    z-index:-1;
+    animation:floatBg 12s ease-in-out infinite alternate;
+}
+
+@keyframes floatBg{
+    0%{transform:translateY(0px);}
+    100%{transform:translateY(-30px);}
+}
+/* Glow pulse */
+.deliver-item.active{
+    box-shadow:0 0 40px rgba(0,224,255,0.15);
+    animation:glowPulse 3s infinite alternate;
+}
+
+@keyframes glowPulse{
+    from{box-shadow:0 0 20px rgba(0,224,255,0.15);}
+    to{box-shadow:0 0 60px rgba(124,58,237,0.25);}
+}
+/* Glow pulse */
+.deliver-item.active{
+    box-shadow:0 0 40px rgba(0,224,255,0.15);
+    animation:glowPulse 3s infinite alternate;
+}
+
+@keyframes glowPulse{
+    from{box-shadow:0 0 20px rgba(0,224,255,0.15);}
+    to{box-shadow:0 0 60px rgba(124,58,237,0.25);}
+}
+/* Scroll reveal */
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:all 0.8s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+.deliver-image{
+    overflow:hidden;
+}
+
+.deliver-image img{
+    transition:transform 0.8s ease;
+}
+.particles{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+}
+
+.particles span{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:#00e0ff;
+    border-radius:50%;
+    opacity:0.4;
+    animation:floatParticle 8s linear infinite;
+}
+
+@keyframes floatParticle{
+    from{
+        transform:translateY(0);
+        opacity:0.2;
+    }
+    to{
+        transform:translateY(-600px);
+        opacity:0;
+    }
+}
+.scroll-progress{
+    position:fixed;
+    top:0;
+    left:0;
+    height:4px;
+    width:0%;
+    background:linear-gradient(90deg,#00e0ff,#7c3aed);
+    z-index:9999;
+}
+.scroll-light{
+    position:fixed;
+    left:50%;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle, rgba(0,224,255,0.15), transparent 70%);
+    transform:translateX(-50%);
+    pointer-events:none;
+    z-index:-1;
 }
 
 /* Mobile */
@@ -488,10 +675,12 @@ body::before{
         font-size:18px;
     }
 }
-
 </style>
 </head>
 <body>
+<div class="scroll-light"></div>
+<div class="particles"></div>
+<div class="scroll-progress"></div>
 <header class="navbar">
     <div class="nav-container">
 
@@ -663,21 +852,124 @@ we streamline your development lifecycle for faster, safer releases.
     </div>
 </section>
 <script>
+document.addEventListener("DOMContentLoaded", function(){
+
+/* ================= DEVICE CHECK ================= */
+
+const isDesktop = window.innerWidth > 992;
+
+
+/* ================= SCROLL PROGRESS BAR ================= */
+
+const progressBar = document.querySelector(".scroll-progress");
+
+window.addEventListener("scroll", () => {
+    if(!progressBar) return;
+
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+
+    progressBar.style.width = progress + "%";
+});
+
+
+/* ================= SCROLL LIGHT BEAM ================= */
+
+const scrollLight = document.querySelector(".scroll-light");
+
+window.addEventListener("scroll", () => {
+    if(scrollLight){
+        scrollLight.style.top = window.scrollY + 200 + "px";
+    }
+});
+
+
+/* ================= PARTICLES ================= */
+
+const particleContainer = document.querySelector(".particles");
+
+if(particleContainer){
+    for(let i = 0; i < 25; i++){
+        const dot = document.createElement("span");
+        dot.style.left = Math.random() * 100 + "%";
+        dot.style.top = Math.random() * 100 + "%";
+        dot.style.animationDuration = (5 + Math.random() * 5) + "s";
+        particleContainer.appendChild(dot);
+    }
+}
+
+
+/* ================= ACCORDION ================= */
+
+const section = document.querySelector(".deliver-section");
 const items = document.querySelectorAll(".deliver-item");
 
-items.forEach(item => {
+if(section && items.length > 0){
 
-    item.addEventListener("mouseenter", () => {
-        item.classList.add("active");
+    function closeAll(){
+        items.forEach(item => item.classList.remove("active"));
+    }
+
+    /* ===== DESKTOP (HOVER) ===== */
+    if(isDesktop){
+
+        items.forEach(item => {
+            item.addEventListener("mouseenter", () => {
+                closeAll();
+                item.classList.add("active");
+            });
+        });
+
+        section.addEventListener("mouseleave", () => {
+            closeAll();
+        });
+
+    }
+
+    /* ===== MOBILE (SINGLE TAP) ===== */
+    else{
+
+        items.forEach(item => {
+            item.addEventListener("click", function(e){
+                e.stopPropagation();
+
+                const alreadyOpen = this.classList.contains("active");
+
+                closeAll();
+
+                if(!alreadyOpen){
+                    this.classList.add("active");
+                }
+            });
+        });
+
+        document.addEventListener("click", function(e){
+            if(!section.contains(e.target)){
+                closeAll();
+            }
+        });
+
+    }
+}
+
+
+/* ================= PARALLAX IMAGE (DESKTOP ONLY) ================= */
+
+if(isDesktop){
+
+    document.addEventListener("mousemove", e => {
+
+        const x = (window.innerWidth / 2 - e.clientX) / 50;
+        const y = (window.innerHeight / 2 - e.clientY) / 50;
+
+        document.querySelectorAll(".deliver-image img").forEach(img => {
+            img.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+        });
+
     });
 
-    item.addEventListener("mouseleave", () => {
-        item.classList.remove("active");
-    });
-
-    item.addEventListener("click", () => {
-        item.classList.toggle("active");
-    });
+}
 
 });
 </script>
