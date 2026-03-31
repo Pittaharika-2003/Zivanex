@@ -15,15 +15,11 @@
 
 /* BODY */
 body{
-    margin:0;
-    padding:0;
     overflow-x:hidden;
     background:black;
 }
 
-/* ==========================
-   VIDEO BACKGROUND
-========================== */
+/* VIDEO BACKGROUND */
 .form-video{
     position:fixed;
     top:0;
@@ -35,7 +31,6 @@ body{
     filter: brightness(1.25) contrast(1.05);
 }
 
-/* VERY LIGHT OVERLAY */
 body::before{
     content:"";
     position:fixed;
@@ -44,19 +39,16 @@ body::before{
     z-index:-1;
 }
 
-/* CENTER SECTION */
+/* CENTER */
 section{
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    text-align:center;
     padding:40px 20px;
 }
 
-/* ==========================
-   GLASS FORM
-========================== */
+/* FORM */
 form{
     background:rgba(17,24,39,0.35);
     padding:45px;
@@ -67,96 +59,24 @@ form{
     border:1px solid rgba(255,255,255,0.15);
 }
 
-/* TEXT */
-h1, p, label{
+h1, p{
     color:white;
+    text-align:center;
+}
+
+p{
+    margin-bottom:20px;
 }
 
 /* INPUTS */
-input, select, textarea{
+input, textarea{
     width:100%;
     padding:12px;
-    margin-top:8px;
     margin-bottom:15px;
     border-radius:10px;
     border:1px solid rgba(255,255,255,0.2);
     background:rgba(0,0,0,0.25);
     color:white;
-}
-
-/* SUBMIT BUTTON */
-input[type="submit"]{
-    background:linear-gradient(135deg,#4f46e5,#7c3aed);
-    border:none;
-    cursor:pointer;
-    font-weight:600;
-    transition:0.3s ease;
-}
-
-input[type="submit"]:hover{
-    transform:translateY(-3px);
-    box-shadow:0 15px 35px rgba(79,70,229,0.4);
-}
-
-/* ==========================
-   MODAL OVERLAY
-========================== */
-.modal-overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.12);
-    backdrop-filter:blur(4px);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-/* MODAL */
-.modal{
-    background:rgba(17,24,39,0.35);
-    backdrop-filter:blur(12px);
-    padding:40px;
-    width:90%;
-    max-width:500px;
-    border-radius:15px;
-    text-align:center;
-    border:1px solid rgba(255,255,255,0.15);
-}
-
-/* CLOSE BTN */
-.close-btn{
-    position:absolute;
-    top:15px;
-    right:20px;
-    font-size:22px;
-    color:white;
-    cursor:pointer;
-}
-
-.modal h1{
-    color:white;
-    margin-bottom:10px;
-}
-
-.modal p{
-    color:#d1d5db;
-    margin-bottom:25px;
-}
-
-/* FORM GROUP */
-.form-group{
-    margin-bottom:20px;
-}
-
-.form-group input,
-.form-group textarea{
-    width:100%;
-    padding:12px;
-    border-radius:8px;
-    border:1px solid #374151;
-    background:rgba(0,0,0,0.25);
-    color:white;
-    outline:none;
 }
 
 /* BUTTON */
@@ -165,7 +85,7 @@ input[type="submit"]:hover{
     padding:12px;
     border:none;
     border-radius:8px;
-    background:#6366f1;
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
     color:white;
     font-weight:bold;
     cursor:pointer;
@@ -174,56 +94,57 @@ input[type="submit"]:hover{
 
 .submit-btn:hover{
     transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(79,70,229,0.4);
 }
 
-/* SUCCESS MESSAGE */
+/* SUCCESS */
 .success-message{
     margin-top:15px;
     color:#22c55e;
+    text-align:center;
     display:none;
 }
 </style>
 </head>
 
 <body>
+
+<!-- VIDEO -->
 <video class="form-video" autoplay muted loop playsinline>
     <source src="https://res.cloudinary.com/dkhmpija5/video/upload/v1772173730/WhatsApp_Video_2026-02-27_at_10.49.22_AM_kuskdz.mp4" type="video/mp4">
 </video>
 
-<div class="modal-overlay" id="modalOverlay">
-    <div class="modal">
+<section>
 
-        <h1>Contact Us</h1>
-        <p>Please fill your details</p>
+<form id="contactForm" action="https://formsubmit.co/marcomm@zivanex.com" method="POST">
 
-        <form id="contactForm">
+    <!-- REQUIRED HIDDEN FIELDS -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New Contact Form Message">
+    <input type="hidden" name="_template" value="table">
 
-            <div class="form-group">
-                <input type="text" placeholder="Your Name" required>
-            </div>
+    <h1>Contact Us</h1>
+    <p>Please fill your details</p>
 
-            <div class="form-group">
-                <input type="email" placeholder="Your Email" required>
-            </div>
+    <!-- FIXED INPUTS (WITH NAME ATTRIBUTES) -->
+    <input type="text" name="name" placeholder="Your Name" required>
 
-            <div class="form-group">
-                <textarea rows="3" placeholder="Project Details" required></textarea>
-            </div>
+    <input type="email" name="email" placeholder="Your Email" required>
 
-            <button type="submit" class="submit-btn">Submit</button>
+    <textarea name="message" rows="3" placeholder="Project Details" required></textarea>
 
-            <div class="success-message" id="successMessage">
-                ✓ Submitted Successfully
-            </div>
+    <button type="submit" class="submit-btn">Submit</button>
 
-        </form>
-
+    <div class="success-message" id="successMessage">
+        ✓ Submitted Successfully
     </div>
-</div>
+
+</form>
+
+</section>
 
 <script>
-document.getElementById("contactForm").addEventListener("submit", function(e){
-    e.preventDefault();
+document.getElementById("contactForm").addEventListener("submit", function(){
 
     const btn = document.querySelector(".submit-btn");
     const success = document.getElementById("successMessage");
@@ -231,16 +152,15 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
     btn.innerText = "Sending...";
     btn.disabled = true;
 
-    setTimeout(function(){
-        btn.innerText = "Submitted";
-        btn.style.background = "#16a34a";
-        success.style.display = "block";
-
-        setTimeout(function(){
-            window.location.href = "index.html";
+    setTimeout(function(){ btn.innerText = "Submitted";
+     btn.style.background = "#16a34a"; 
+     success.style.display = "block"; 
+     
+        setTimeout(function(){ 
+            window.location.href = "example.html"; 
         },1500);
-
     },1500);
+
 });
 </script>
 
