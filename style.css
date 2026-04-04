@@ -35,7 +35,8 @@ body {
 }
 
 .logo img{
-    height:42px;
+      height:56px;
+    padding-top: 20px;
 }
 
 /* LINKS */
